@@ -1,54 +1,33 @@
 <template>
 <div id="app">
     <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <AddItemComponent @add-new-item="addItem"></AddItemComponent>
-    <ItemsComponent :items="items"></ItemsComponent>
-    <ChangeTitleComponent :msg="msg"></ChangeTitleComponent>
+    <h2><span>Paramodo</span>
+        <control-component></control-component>
+    </h2>
+    <state-title-compoent></state-title-compoent>
+    <count-down-component></count-down-component>
+    <kitty-component></kitty-component>
 </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import ItemsComponent from './components/ItemsComponent.vue'
-import ChangeTitleComponent from './components/ChangeTitleComponent.vue'
-import AddItemComponent from './components/AddItemComponent.vue'
+import StateTitleCompoent from './components/StateTitleCompoent.vue'
+import ControlComponent from './components/ControlComponent.vue'
+import CountDownComponent from './components/CountDownComponent.vue'
+import KittyComponent from './components/KittyComponent.vue'
 
 export default {
     name: 'App',
     components: {
-        HelloWorld,
-        ItemsComponent,
-        ChangeTitleComponent,
-        AddItemComponent,
+        StateTitleCompoent,
+        ControlComponent,
+        CountDownComponent,
+        KittyComponent
     },
     data() {
-        return {
-            items: [{
-                    text: 'Bananas',
-                    checked: true
-                },
-                {
-                    text: 'Apples',
-                    checked: false
-                }
-            ],
-            newItem: '',
-            msg: 'Title'
-        }
+        return {}
     },
-    methods: {
-        addItem: function (itemValue) {
-            if (itemValue) {
-                itemValue = itemValue.trim()
-                this.items.push({
-                    text: itemValue,
-                    checked: false
-                });
-            }
-
-        }
-    }
+    methods: {}
 }
 </script>
 
