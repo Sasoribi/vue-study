@@ -6,7 +6,10 @@
     </h2>
     <state-title-compoent></state-title-compoent>
     <count-down-component></count-down-component>
-    <kitty-component></kitty-component>
+        <transition name="fade">
+        <kitty-component v-if="kitty" @fade="fade" :kitty="kitty"></kitty-component>
+    </transition>
+
 </div>
 </template>
 
@@ -16,6 +19,9 @@ import ControlComponent from './components/ControlComponent.vue'
 import CountDownComponent from './components/CountDownComponent.vue'
 import KittyComponent from './components/KittyComponent.vue'
 
+window.data = {
+    kitty: true
+}
 export default {
     name: 'App',
     components: {
@@ -25,13 +31,17 @@ export default {
         KittyComponent
     },
     data() {
-        return {}
+        return window.data
     },
-    methods: {}
+    methods: {
+        fade:function(){
+            this.kitty = !this.kitty
+        }
+    }
 }
 </script>
 
-<style>
+<style scoped>
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -39,5 +49,14 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
 }
 </style>
